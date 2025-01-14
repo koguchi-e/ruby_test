@@ -32,7 +32,7 @@ https://docs.ruby-lang.org/ja/latest/doc/spec=2fobject.html<br>
 
 #### include Skills(character.rb内)
 - クラス名やモジュール名は大文字で書く。
-- includeはモジュールをクラス内に取り込むためのキーワード。
+- includeはモジュールをクラス内に取り込むためのキーワード。<br>
 これにより、Skillモジュール内のメソッド(attackとdamege)がクラスのインスタンスメソッドとして使用できる。
 
 #### なぜtake_damage(ダメージを受ける)メソッドをクラスに書くか？
