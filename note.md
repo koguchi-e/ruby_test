@@ -1,7 +1,7 @@
 ## 1/10 教わったこと
 #### Rubyのインスタンス変数
 
-公式ドキュメント
+公式ドキュメント<br>
 https://docs.ruby-lang.org/ja/latest/doc/spec=2fvariables.html#instance
 
 - オブジェクトに属する変数
