@@ -17,6 +17,7 @@ class Character
 
   ###########################################
 
+  # 防御の計算メソッド
   def calculate_damage(attack_power)
     defense_value = defend
     damage = [attack_power - defense_value, 0].max
@@ -24,7 +25,7 @@ class Character
     damage
   end
 
-  # 「ダメージを受ける」メソッド
+  # ダメージ受けるメソッド
   def take_damage(value)
     @hp -= value
     puts "#{name} は #{value} のダメージを受けた！残りHP: #{@hp}"
