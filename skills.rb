@@ -6,7 +6,9 @@ module Skills
   end
 
   def defend
+    defense = rand(10)
     puts "#{name} は防御した！"
+    defense
   end
 
 end

@@ -2,35 +2,33 @@
 require_relative './character'
 
 character = Character.new(name: "hero", hp: 100)
-
 enemy = Character.new(name: "devil", hp: 100)
 
-# loop do
-#   enemy.hp = enemy.hp - character.attack
-#   if enemy.hp <= 0
-#     puts "#{enemy.name} 倒れた！"
-#     break
-#   end
-# end
+# ジャッジ
+def judge(target)
+  if target.hp <= 0
+    puts "#{target.name} は倒れた！"
+    return true
+  end
+  false
+end
 
 loop do
-  # 主人公の攻撃
-  damage = character.attack
-  enemy.take_damage(damage)
+  # キャラクターの攻撃
+  attack_power = character.attack
+  enemy.calculate_damage(attack_power)
 
-  if enemy.hp <= 0
-    puts "#{enemy.name} は倒れた！"
+  if judge(character)
     break
   end
-
-  #########################
+  
   # 敵の攻撃
-  damage = enemy.attack
-  character.take_damage(damage)
+  attack_power = enemy.attack
+  character.calculate_damage(attack_power)
 
-  if character.hp <= 0
-    puts "#{character.name} は倒れた！"
+  if judge(enemy)
     break
   end
 end
+
 
