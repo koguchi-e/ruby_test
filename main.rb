@@ -1,34 +1,40 @@
-# require_relative：他のRubyファイルを読み込むためのメソッド
 require_relative './character'
 
-character = Character.new(name: "hero", hp: 100)
+class BattleGame
+  def initialize(player, enemy)
+    @player = player
+    @enemy = enemy
+    @game_over = false
+  end
+
+  def start
+    until @game_over
+      execute_turn(@player, @enemy)
+      break if @game_over
+
+      execute_turn(@enemy, @player)
+    end
+  end
+
+  private
+
+  def execute_turn(attacker, defender)
+    attack_point = attacker.attack
+    defense_point = defender.defend
+    defender.calculate_damage(attack_point, defense_point)
+    
+    check_defeat(defender)
+  end
+
+  def check_defeat(character)
+    if character.hp <= 0
+      @game_over = true
+      puts "#{character.name}は倒れた！"
+    end
+  end
+end
+
+player = Character.new(name: "hero", hp: 100)
 enemy = Character.new(name: "devil", hp: 100)
-
-# ジャッジ
-def judge(target)
-  if target.hp <= 0
-    puts "#{target.name} は倒れた！"
-    return true
-  end
-  false
-end
-
-loop do
-  # キャラクターの攻撃
-  attack_power = character.attack
-  enemy.calculate_damage(attack_power)
-
-  if judge(character)
-    break
-  end
-  
-  # 敵の攻撃
-  attack_power = enemy.attack
-  character.calculate_damage(attack_power)
-
-  if judge(enemy)
-    break
-  end
-end
-
-
+game = BattleGame.new(player, enemy)
+game.start
