@@ -11,9 +11,7 @@ class Character
   end
 
   def calculate_damage(attack_point, defense_point)
-    damage = [attack_point - defense_point, 0].max
-    take_damage(damage)
-    damage
+    [attack_point - defense_point, 0].max
   end
 
   def take_damage(damage_point)
