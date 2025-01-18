@@ -21,8 +21,8 @@ class BattleGame
   def execute_turn(attacker, defender)
     attack_point = attacker.attack
     defense_point = defender.defend
-    damage = attacker.calculate_damage(attack_point, defense_point)
-    defender.take_damage(damage)
+    damage_point = attacker.calculate_damage(attack_point, defense_point)
+    defender.take_damage(damage_point)
     
     check_defeat(defender)
   end
