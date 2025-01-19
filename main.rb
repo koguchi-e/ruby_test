@@ -1,11 +1,9 @@
-# require_relative：他のRubyファイルを読み込むためのメソッド
 require_relative './character'
 
 character = Character.new(name: "hero", hp: 100)
 enemy = Character.new(name: "devil", hp: 100)
 
-# ジャッジ
-def judge(target)
+def judge_defeat(target)
   if target.hp <= 0
     puts "#{target.name} は倒れた！"
     return true
@@ -13,22 +11,16 @@ def judge(target)
   false
 end
 
-loop do
-  # キャラクターの攻撃
-  attack_power = character.attack
-  enemy.calculate_damage(attack_power)
+def execute_turn(attacker, defender)
+  attack_value = attacker.attack
+  defense_value = defender.defend
+  damage = attacker.calculate_damage(attack_value, defense_value)
+  defender.take_damage(damage)
 
-  if judge(character)
-    break
-  end
-  
-  # 敵の攻撃
-  attack_power = enemy.attack
-  character.calculate_damage(attack_power)
-
-  if judge(enemy)
-    break
-  end
+  judge_defeat(defender)
 end
 
-
+loop do
+  break if execute_turn(character, enemy)
+  break if execute_turn(enemy, character)
+end
