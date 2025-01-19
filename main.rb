@@ -3,7 +3,7 @@ require_relative './character'
 character = Character.new(name: "hero", hp: 100)
 enemy = Character.new(name: "devil", hp: 100)
 
-def judge(target)
+def judge_defeat(target)
   if target.hp <= 0
     puts "#{target.name} は倒れた！"
     return true
@@ -17,7 +17,7 @@ def execute_turn(attacker, defender)
   damage = attacker.calculate_damage(attack_value, defense_value)
   defender.take_damage(damage)
 
-  judge(defender)
+  judge_defeat(defender)
 end
 
 loop do
