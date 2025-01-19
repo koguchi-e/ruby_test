@@ -10,5 +10,4 @@ module Skills
     puts "#{name} は防御した！"
     defense
   end
-
 end

@@ -19,6 +19,4 @@ class Character
     puts "#{name} は #{value} のダメージを受けた！残りHP: #{@hp}"
     puts "#{name} の残りHPは #{hp} です。"
   end
-  
 end
-
