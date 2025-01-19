@@ -10,11 +10,8 @@ class Character
     @hp = hp
   end
 
-  def calculate_damage(attack_power)
-    defense_value = defend
-    damage = [attack_power - defense_value, 0].max
-    take_damage(damage)
-    damage
+  def calculate_damage(attack_value, defense_value)
+    [attack_value - defense_value, 0].max
   end
 
   def take_damage(value)

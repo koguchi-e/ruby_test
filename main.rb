@@ -15,16 +15,20 @@ end
 
 loop do
   # キャラクターの攻撃
-  attack_power = character.attack
-  enemy.calculate_damage(attack_power)
+  attack_value = character.attack
+  defense_value = enemy.defend
+  damage = character.calculate_damage(attack_value, defense_value)
+  enemy.take_damage(damage)
 
   if judge(character)
     break
   end
   
   # 敵の攻撃
-  attack_power = enemy.attack
-  character.calculate_damage(attack_power)
+  attack_value = enemy.attack
+  defense_value = character.defend
+  damage = character.calculate_damage(attack_value,defense_value)
+  character.take_damage(damage)
 
   if judge(enemy)
     break
