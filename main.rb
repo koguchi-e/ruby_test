@@ -11,21 +11,20 @@ def judge(target)
   false
 end
 
-loop do
-  attack_value = character.attack
-  defense_value = enemy.defend
-  damage = character.calculate_damage(attack_value, defense_value)
-  enemy.take_damage(damage)
+def execute_turn(attacker, defender)
+  attack_value = attacker.attack
+  defense_value = defender.defend
+  damage = attacker.calculate_damage(attack_value, defense_value)
+  defender.take_damage(damage)
+end
 
+loop do
+  execute_turn(character, enemy)
   if judge(character)
     break
   end
-  
-  attack_value = enemy.attack
-  defense_value = character.defend
-  damage = character.calculate_damage(attack_value,defense_value)
-  character.take_damage(damage)
 
+  execute_turn(enemy, character)
   if judge(enemy)
     break
   end
