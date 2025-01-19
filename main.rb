@@ -16,16 +16,11 @@ def execute_turn(attacker, defender)
   defense_value = defender.defend
   damage = attacker.calculate_damage(attack_value, defense_value)
   defender.take_damage(damage)
+
+  judge(defender)
 end
 
 loop do
-  execute_turn(character, enemy)
-  if judge(character)
-    break
-  end
-
-  execute_turn(enemy, character)
-  if judge(enemy)
-    break
-  end
+  break if execute_turn(character, enemy)
+  break if execute_turn(enemy, character)
 end
